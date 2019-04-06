@@ -17,8 +17,16 @@ end
 
 
 local black = "#000000"
+
+-- global setting used to control the default fog colour when a player joins.
+-- note that nothing stops this from being overriden later...
+if not minetest.global_exists("yetdarker_fog_colour") then
+	-- intentional global assignment
+	yetdarker_fog_colour = black
+end
+
 minetest.register_on_joinplayer(function(player)
-	player:set_sky(black, "plain", nil, false)
+	player:set_sky(yetdarker_fog_colour, "plain", nil, false)
 end)
 
 
